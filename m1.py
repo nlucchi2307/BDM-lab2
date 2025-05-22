@@ -115,7 +115,6 @@ result_q3 = persons_col.update_many(
 )
 q3_time = time.time() - start
 print(f"Q3 execution time: {q3_time:.4f}s")
-print(f"Q3 updated {result_q3.modified_count} documents")
 
 # Q4: Update company names to include "Company"
 start = time.time()
@@ -124,8 +123,3 @@ result_q4 = companies_col.update_many(
     [{"$set": {"name": {"$concat": ["$name", " Company"]}}}])  # concatenate " Company" to existing name
 q4_time = time.time() - start
 print(f"Q4 execution time: {q4_time:.4f}s")
-print(f"Q4 updated {result_q4.modified_count} documents")
-
-print("\n=== SUMMARY ===")
-print(f"Total companies: {companies_col.count_documents({})}")
-print(f"Total persons: {persons_col.count_documents({})}")
