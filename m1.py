@@ -4,10 +4,14 @@ import pymongo
 from faker import Faker
 import random
 import time
+import json
+
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
 
 # connect to MongoDB
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["lab2_db"]
+client = pymongo.MongoClient(f"mongodb://{config['connection']['host']}:{config['connection']['port']}/")
+db = client[config['database']['name']]  # Use the database name from the config file
 companies_col = db["companies_m1"]
 persons_col = db["persons_m1"]
 

@@ -1,0 +1,9 @@
+{
+    "database": {
+      "name": "lab2_db"
+    },
+    "connection": {
+      "host": "localhost",
+      "port": "27017"
+    }
+  }
